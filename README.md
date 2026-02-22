@@ -30,7 +30,6 @@ The workflow supports:
 ---
 
 ## 📂 Repository Structure
-
 ```bash
 worm_locomotion_analysis/
 │
@@ -73,9 +72,13 @@ https://www.anaconda.com/
 ```bash
 conda env create -f environment.yml
 conda activate worm_analysis
-Step 3 — Run Analysis
+```
+
+
+### Step 3 — Run Analysis
 python worm_locomotion_analysis.py
-📥 Input Data Format
+
+## 📥 Input Data Format
 
 Each .xlsx file must contain:
 
@@ -89,8 +92,8 @@ Centroid coordinates should be exported from:
 
 Nematode Trajectory Analysis.exe
 
-🔬 Algorithm Workflow
-1️⃣ Quality Control
+## 🔬 Algorithm Workflow
+### 1️⃣ Quality Control
 
 Automatic detection of:
 
@@ -109,20 +112,20 @@ QC_JUMP_FACTOR = 8.0
 QC_IQR_FACTOR = 4.0
 QC_MIN_VALID_FRACTION = 0.6
 PAD_SEC = 1
-2️⃣ Baseline Extraction
+### 2️⃣ Baseline Extraction
 
 Moving average smoothing:
 
 BASELINE_SMOOTH_SEC = 0.5
-3️⃣ Distance Signal Construction
+### 3️⃣ Distance Signal Construction
 
 Distance from raw trajectory to smoothed baseline:
 
 Distance(t) = sqrt[(x - x_baseline)^2 + (y - y_baseline)^2]
-4️⃣ Savitzky–Golay Filtering
+### 4️⃣ Savitzky–Golay Filtering
 SG_WINDOW_SEC = 1.0
 SG_POLYORDER = 3
-5️⃣ Peak Detection
+### 5️⃣ Peak Detection
 
 Using:
 
@@ -132,14 +135,15 @@ Constraints:
 
 MIN_PEAK_WIDTH_SEC = 0.1
 MAX_PEAK_WIDTH_SEC = 3.5
-6️⃣ Feature Extraction
+### 6️⃣ Feature Extraction
 
 Amplitude = Peak − adjacent Valley
 
 Period = Time between consecutive maxima
 
-📊 Output
-Excel Summary
+## 📊 Output
+
+### 📄 Excel Summary
 
 Saved to:
 
@@ -147,21 +151,17 @@ results/analysis_results.xlsx
 
 Includes:
 
-avg_velocity
+- `avg_velocity`
+- `period_mean`
+- `period_median`
+- `amp_mean`
+- `amp_median`
+- `num_cycles`
+- `qc_bad_fraction`
 
-period_mean
+---
 
-period_median
-
-amp_mean
-
-amp_median
-
-num_cycles
-
-qc_bad_fraction
-
-Diagnostic Figures
+### 📈 Diagnostic Figures
 
 Saved to:
 
@@ -169,17 +169,14 @@ results/figures/
 
 Includes:
 
-Trajectory vs baseline
+- Trajectory vs baseline  
+- Distance function  
+- Peak detection visualization  
+- Zoomed trajectory segments  
 
-Distance function
+**Resolution:** 300 dpi
 
-Peak detection visualization
-
-Zoomed trajectory segments
-
-Resolution: 300 dpi
-
-⚠️ Limitations
+## ⚠️ Limitations
 
 Does not reconstruct full-body posture
 
@@ -189,7 +186,7 @@ Does not distinguish forward vs reverse cycles
 
 Requires sufficient frame rate
 
-👩‍🔬 Contacts
+## 👩‍🔬 Contacts
 
 Lead Contact
 He Liu
