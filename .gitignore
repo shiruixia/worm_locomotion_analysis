@@ -1,0 +1,7 @@
+# PyCharm
+.idea/
+*.iml
+`__pycache__`/
+
+# VSCode
+.vscode/
