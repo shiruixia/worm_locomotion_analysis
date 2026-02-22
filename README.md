@@ -31,7 +31,7 @@ The workflow supports:
 
 ## 📂 Repository Structure
 
-
+```bash
 worm_locomotion_analysis/
 │
 ├── worm_locomotion_analysis.py
@@ -39,7 +39,7 @@ worm_locomotion_analysis/
 ├── data/
 ├── results/
 └── README.md
-
+```
 
 ---
 
